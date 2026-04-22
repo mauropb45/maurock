@@ -44,6 +44,7 @@
     }
 
     a{text-decoration:none;color:inherit}
+    button{font:inherit}
 
     .wrap{
       max-width:var(--max);
@@ -94,11 +95,15 @@
       padding:34px 0 24px;
     }
 
-    .hero-card{
+    .hero-card,
+    .section-card{
       background:linear-gradient(180deg,var(--panel),var(--soft));
       border:1px solid var(--line);
       border-radius:28px;
       box-shadow:var(--shadow);
+    }
+
+    .hero-card{
       overflow:hidden;
     }
 
@@ -195,10 +200,6 @@
     }
 
     .section-card{
-      background:linear-gradient(180deg,var(--panel),var(--soft));
-      border:1px solid var(--line);
-      border-radius:24px;
-      box-shadow:var(--shadow);
       padding:22px 18px;
     }
 
@@ -208,7 +209,7 @@
 
     .section-head h2{
       margin:0 0 8px;
-      font-size:1.6rem;
+      font-size:1.55rem;
       letter-spacing:-.04em;
     }
 
@@ -225,15 +226,36 @@
 
     .player-frame{
       width:100%;
-      min-height:352px;
+      height:232px;
       border:0;
       border-radius:16px;
       background:#eef7fc;
     }
 
-    .song-list{
+    .song-focus{
+      padding:16px;
+      border-radius:18px;
+      background:#fbfeff;
+      border:1px solid var(--line);
+    }
+
+    .song-focus h3{
+      margin:0 0 8px;
+      font-size:1.12rem;
+      letter-spacing:-.03em;
+    }
+
+    .song-focus p{
+      margin:0;
+      color:#50626d;
+      line-height:1.75;
+      font-size:.96rem;
+    }
+
+    .song-actions{
       display:grid;
       gap:10px;
+      margin-top:14px;
     }
 
     .song-btn{
@@ -263,13 +285,13 @@
     .song-btn strong{
       display:block;
       margin-bottom:4px;
-      font-size:1rem;
+      font-size:.98rem;
     }
 
     .song-btn span{
       color:var(--muted);
-      line-height:1.6;
-      font-size:.92rem;
+      line-height:1.55;
+      font-size:.9rem;
     }
 
     .story{
@@ -352,6 +374,10 @@
       }
 
       .hero-actions{
+        grid-template-columns:1.2fr .8fr;
+      }
+
+      .song-actions{
         grid-template-columns:1fr 1fr;
       }
     }
@@ -378,36 +404,33 @@
           <div class="hero-copy">
             <div class="eyebrow">Música, testimonio y encuentro</div>
 
-            <h1>Un espacio para compartir con comunidades, escuchar juntos y abrir conversación.</h1>
+            <h1>Un espacio para compartir con comunidades y abrir conversación desde la música.</h1>
 
             <p class="lead">
-              MauRock nace desde experiencias reales y hoy busca transformarse en encuentros para colegios,
-              empresas, iglesias y comunidades que quieran detenerse un momento, escuchar y hablar de lo que de verdad importa.
+              MauRock busca llegar a colegios, empresas, iglesias y comunidades que quieran detenerse un momento,
+              escuchar juntos y hablar de lo que de verdad importa.
             </p>
 
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quisiera%20que%20vengas%20a%20compartir%20con%20nosotros."
+                href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quisiera%20que%20vinieras%20a%20compartir%20con%20nosotros."
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Quisiera que vengas a compartir con nosotros
+                Quisiera que vinieras a compartir con nosotros
               </a>
 
               <a
                 class="btn btn-soft"
-                href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#escuchar"
               >
-                Escuchar en Spotify
+                Escuchar canciones
               </a>
             </div>
 
             <div class="note">
-              Si una canción acompaña a alguien, si una historia abre conversación y si un encuentro deja algo bueno,
-              entonces todo esto ya está cumpliendo su propósito.
+              Si una canción acompaña a alguien y una historia abre conversación, entonces todo esto ya está cumpliendo su propósito.
             </div>
           </div>
 
@@ -422,7 +445,7 @@
       <div class="section-card">
         <div class="section-head">
           <h2>Escuchar</h2>
-          <p>Un reproductor principal y abajo las canciones para cambiar sin llenar la página de bloques vacíos.</p>
+          <p>Una canción destacada al centro. El resto queda disponible para quien quiera seguir escuchando.</p>
         </div>
 
         <div class="player-wrap">
@@ -434,36 +457,34 @@
             loading="lazy"
           ></iframe>
 
-          <div class="song-list">
-            <button class="song-btn active" data-track="4FyAxw3Xq3Jl4NWYVPgi7f" type="button">
+          <div class="song-focus">
+            <h3 id="songTitle">Verano Roto</h3>
+            <p id="songText">
+              Hay canciones que llegan cuando algo cambia para siempre. No para resolverlo todo,
+              sino para ponerle voz a ese momento en que la vida deja de sentirse igual que antes.
+            </p>
+          </div>
+
+          <div class="song-actions">
+            <button
+              class="song-btn active"
+              data-track="4FyAxw3Xq3Jl4NWYVPgi7f"
+              data-title="Verano Roto"
+              data-text="Hay canciones que llegan cuando algo cambia para siempre. No para resolverlo todo, sino para ponerle voz a ese momento en que la vida deja de sentirse igual que antes."
+              type="button"
+            >
               <strong>Verano Roto</strong>
-              <span>El momento en que algo cambia para siempre.</span>
+              <span>Escuchar esta canción</span>
             </button>
 
-            <button class="song-btn" data-track="1OWR0l0W2m06WhOAxJyEdK" type="button">
-              <strong>Aunque tiemble el suelo</strong>
-              <span>Seguir en pie incluso cuando todo parece moverse.</span>
-            </button>
-
-            <button class="song-btn" data-track="15kC7uSV9Dm4iIxdIc2yXq" type="button">
-              <strong>El baile del miedo y la fe</strong>
-              <span>La tensión entre la angustia y la confianza.</span>
-            </button>
-
-            <button class="song-btn" data-track="2iKVat6L076bZ7ov1aenNs" type="button">
-              <strong>Mi fortuna</strong>
-              <span>Volver a mirar aquello que realmente permanece.</span>
-            </button>
-
-            <button class="song-btn" data-track="6G2uJVn7rVKbaMc59nKIZj" type="button">
-              <strong>Buscando el norte</strong>
-              <span>Reencontrar dirección y horizonte después del golpe.</span>
-            </button>
-
-            <button class="song-btn" data-track="4yiqByKoMAGJX4oO2081qE" type="button">
-              <strong>Entre ruinas y fe</strong>
-              <span>Seguir creyendo incluso cuando algo quedó roto.</span>
-            </button>
+            <a
+              class="btn btn-soft"
+              href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conocer el resto en Spotify
+            </a>
           </div>
         </div>
       </div>
@@ -504,11 +525,11 @@
 
         <a
           class="btn btn-primary"
-          href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quisiera%20que%20vengas%20a%20compartir%20con%20nosotros."
+          href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quisiera%20que%20vinieras%20a%20compartir%20con%20nosotros."
           target="_blank"
           rel="noopener noreferrer"
         >
-          Quisiera que vengas a compartir con nosotros
+          Quisiera que vinieras a compartir con nosotros
         </a>
       </div>
     </section>
@@ -535,11 +556,19 @@
   <script>
     const player = document.getElementById("spotifyPlayer");
     const buttons = document.querySelectorAll(".song-btn");
+    const songTitle = document.getElementById("songTitle");
+    const songText = document.getElementById("songText");
 
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const track = btn.dataset.track;
+        const title = btn.dataset.title;
+        const text = btn.dataset.text;
+
         player.src = `https://open.spotify.com/embed/track/${track}?utm_source=generator&theme=0`;
+        songTitle.textContent = title;
+        songText.textContent = text;
+
         buttons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
       });
