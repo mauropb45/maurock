@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MauRock | Música con propósito</title>
+<title>MauRock</title>
 
 <style>
 body{
@@ -11,53 +11,36 @@ body{
   font-family:-apple-system, BlinkMacSystemFont, sans-serif;
   background:#f6fbff;
   color:#2b3b46;
+  text-align:center;
 }
 
 .wrap{
-  max-width:1100px;
+  max-width:600px;
   margin:auto;
   padding:20px;
 }
 
 /* HERO */
 
-.hero{
-  padding:30px 0;
+h1{
+  font-size:2rem;
+  margin-top:20px;
 }
 
-.hero-grid{
-  display:grid;
-  gap:20px;
+p{
+  color:#60727d;
+  line-height:1.6;
 }
 
-.hero-main,
-.hero-side{
-  background:linear-gradient(180deg,#ffffff,#f5fbff);
-  border-radius:24px;
-  padding:22px;
-  box-shadow:0 15px 40px rgba(0,0,0,.06);
-}
-
-.hero h1{
-  font-size:clamp(2rem,7vw,3.5rem);
-  line-height:1.05;
-  margin-bottom:14px;
-}
-
-.hero-copy{
-  color:#5c707c;
-  line-height:1.7;
-}
+/* BOTONES */
 
 .btn{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:16px;
+  display:block;
+  margin:12px 0;
   padding:14px;
+  border-radius:16px;
   text-decoration:none;
   font-weight:bold;
-  margin-top:10px;
 }
 
 .btn-primary{
@@ -65,173 +48,126 @@ body{
   color:white;
 }
 
-.btn-secondary{
-  background:white;
-  border:1px solid #cfe4ef;
-  color:#2b3b46;
-}
-
-.hero-img{
-  width:100%;
-  border-radius:20px;
-}
-
-.hero-mini{
-  font-size:0.95rem;
-  color:#60727d;
-}
-
-/* SECCIONES */
-
-.section{
-  margin-top:40px;
-}
-
-.section h2{
-  margin-bottom:12px;
-}
-
-/* SPOTIFY */
-
-.spotify iframe{
-  width:100%;
-  border-radius:12px;
-  margin-bottom:12px;
-}
-
-/* LINKS */
-
-.links a{
-  display:block;
-  margin-bottom:10px;
-  text-align:center;
-  padding:14px;
-  border-radius:14px;
-  text-decoration:none;
+.btn-soft{
   background:white;
   border:1px solid #d7e8f2;
   color:#2b3b46;
 }
 
-/* RESPONSIVE */
+/* SPOTIFY */
 
-@media(min-width:900px){
-  .hero-grid{
-    grid-template-columns:1fr 1fr;
-  }
+iframe{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:12px;
 }
-</style>
 
+/* IMAGEN */
+
+.img{
+  width:100%;
+  border-radius:18px;
+  margin:20px 0;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+/* SECCIONES */
+
+.section{
+  margin-top:30px;
+}
+
+/* LINKS */
+
+.link{
+  display:block;
+  margin:8px 0;
+  padding:14px;
+  border-radius:14px;
+  background:white;
+  border:1px solid #d7e8f2;
+  text-decoration:none;
+  color:#2b3b46;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="wrap">
 
-<!-- HERO -->
+<h1>Un espacio para escuchar</h1>
 
-<section class="hero">
-  <div class="hero-grid">
+<p>
+MauRock nace desde la vida, el dolor y la esperanza.  
+Si alguna canción logra acompañarte, entonces todo esto ya tiene sentido.
+</p>
 
-    <div class="hero-main">
-      <h1>Un lugar para detenerse, escuchar y volver a encontrarse</h1>
+<a class="btn btn-primary" href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4" target="_blank">
+Escuchar en Spotify
+</a>
 
-      <p class="hero-copy">
-        MauRock nace desde experiencias reales.  
-        No busca mostrar una historia, sino abrir un espacio donde la música acompañe,
-        donde las conversaciones tengan sentido y donde cada persona pueda encontrarse con algo propio.
-      </p>
+<!-- CANCIONES -->
 
-      <a class="btn btn-primary" href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4" target="_blank">
-        Escuchar en Spotify
-      </a>
+<div class="section">
+<h2>Canciones</h2>
 
-      <a class="btn btn-secondary" href="#charlas">
-        Llevar este espacio a otros
-      </a>
+<iframe src="https://open.spotify.com/embed/track/4FyAxw3Xq3Jl4NWYVPgi7f"></iframe>
+<iframe src="https://open.spotify.com/embed/track/1OWR0l0W2m06WhOAxJyEdK"></iframe>
+<iframe src="https://open.spotify.com/embed/track/15kC7uSV9Dm4iIxdIc2yXq"></iframe>
+<iframe src="https://open.spotify.com/embed/track/2iKVat6L076bZ7ov1aenNs"></iframe>
+<iframe src="https://open.spotify.com/embed/track/6G2uJVn7rVKbaMc59nKIZj"></iframe>
+<iframe src="https://open.spotify.com/embed/track/4yiqByKoMAGJX4oO2081qE"></iframe>
 
-      <p class="hero-mini">
-        Si una canción acompaña a alguien, entonces todo esto ya está cumpliendo su propósito.
-      </p>
-    </div>
+</div>
 
-    <div class="hero-side">
-      <img src="maurock-cover.png" class="hero-img">
+<!-- IMAGEN -->
 
-      <div class="hero-mini">
-        A veces la música no responde todo,  
-        pero sí puede ayudar a decir lo que cuesta vivir en silencio.
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- SPOTIFY -->
-
-<section class="section spotify">
-  <h2>Escuchar</h2>
-
-  <iframe src="https://open.spotify.com/embed/track/4FyAxw3Xq3Jl4NWYVPgi7f"></iframe>
-  <iframe src="https://open.spotify.com/embed/track/1OWR0l0W2m06WhOAxJyEdK"></iframe>
-  <iframe src="https://open.spotify.com/embed/track/15kC7uSV9Dm4iIxdIc2yXq"></iframe>
-  <iframe src="https://open.spotify.com/embed/track/2iKVat6L076bZ7ov1aenNs"></iframe>
-  <iframe src="https://open.spotify.com/embed/track/6G2uJVn7rVKbaMc59nKIZj"></iframe>
-  <iframe src="https://open.spotify.com/embed/track/4yiqByKoMAGJX4oO2081qE"></iframe>
-
-</section>
-
+<img src="maurock-cover.png" class="img">
 
 <!-- HISTORIA -->
 
-<section class="section">
-  <h2>Desde dónde nace</h2>
+<div class="section">
+<h2>Desde dónde nace</h2>
 
-  <p class="hero-copy">
-    Mauricio José Pinto Basso, profesor de música y músico, es quien está detrás de MauRock.
-    Guitarrista de la banda Servicentro, con más de 15 años de trayectoria,
-    y fundador de MejorarIA.
-  </p>
+<p>
+Mauricio José Pinto Basso, profesor de música y guitarrista de Servicentro,
+da vida a MauRock como una forma de transformar experiencias en música.
+</p>
 
-  <p class="hero-copy">
-    En medio de su proceso con el cáncer, comenzaron a surgir proyectos como MauRock y MejorarIA,
-    como formas de transformar la experiencia en algo que pudiera acompañar a otros.
-  </p>
+<p>
+En medio de su proceso con el cáncer, comienzan a surgir proyectos como MauRock y MejorarIA,
+como una manera de compartir lo vivido y acompañar a otros.
+</p>
 
-  <p class="hero-copy">
-    MauRock no busca ser vitrina, sino encuentro.
-    Un espacio donde la música abre conversación y la historia puede ser compartida.
-  </p>
-</section>
-
+</div>
 
 <!-- CHARLAS -->
 
-<section class="section" id="charlas">
-  <h2>Charlas y encuentros</h2>
+<div class="section">
+<h2>Encuentros y charlas</h2>
 
-  <p class="hero-copy">
-    Este proyecto también se transforma en espacios presenciales:
-    colegios, empresas y comunidades donde la música y la historia se convierten en conversación,
-    reflexión y sentido.
-  </p>
+<p>
+Este proyecto también se transforma en espacios de conversación en colegios,
+empresas y comunidades, donde la música y la historia abren reflexión.
+</p>
 
-  <a class="btn btn-primary" href="https://wa.me/56997322973">
-    Contactar por WhatsApp
-  </a>
-</section>
+<a class="btn btn-primary" href="https://wa.me/56997322973">
+Contactar por WhatsApp
+</a>
 
+</div>
 
 <!-- REDES -->
 
-<section class="section links">
-  <h2>Conectar</h2>
+<div class="section">
+<h2>Conectar</h2>
 
-  <a href="https://www.instagram.com/maurock_oficial" target="_blank">Instagram</a>
-  <a href="https://www.tiktok.com/@maurock_oficial" target="_blank">TikTok</a>
-</section>
+<a class="link" href="https://www.instagram.com/maurock_oficial">Instagram</a>
+<a class="link" href="https://www.tiktok.com/@maurock_oficial">TikTok</a>
 
+</div>
 
 </div>
 
