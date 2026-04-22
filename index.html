@@ -1,146 +1,747 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MauRock | Música con propósito</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MauRock | Un espacio para escuchar</title>
+  <meta name="description" content="MauRock es un espacio de música, memoria, fe y encuentro. Canciones nacidas desde la vida, el dolor y la esperanza." />
+  <meta name="theme-color" content="#f8f7f3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbfaf7;
+      --bg-soft:#f3efe7;
+      --panel:#fffdf9;
+      --panel-2:#f8f4ec;
+      --line:#e7dfd2;
+      --text:#3b322d;
+      --muted:#72655c;
+      --pearl:#f5f2ec;
+      --sky:#dcecf6;
+      --sky-strong:#b7d6ea;
+      --sun:#e8c56f;
+      --sun-soft:#f2e2b0;
+      --wine:#8a4b56;
+      --sunburst:#c57d3a;
+      --shadow:0 18px 38px rgba(86,68,47,.08);
+      --radius:26px;
+      --max:1180px;
+    }
 
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#f7f4ef;
-    color:#3a342e;
-}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
-.container{
-    padding:20px;
-    max-width:600px;
-    margin:auto;
-}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(183,214,234,.40), transparent 22%),
+        radial-gradient(circle at top right, rgba(232,197,111,.24), transparent 18%),
+        linear-gradient(180deg,var(--bg),var(--pearl));
+    }
 
-h1{
-    font-size:28px;
-    text-align:center;
-    margin-top:20px;
-}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
 
-p{
-    text-align:center;
-    line-height:1.6;
-}
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+    }
 
-.logo{
-    width:100%;
-    border-radius:12px;
-    margin-top:10px;
-}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:30;
+      backdrop-filter:blur(14px);
+      background:rgba(251,250,247,.82);
+      border-bottom:1px solid rgba(138,75,86,.08);
+    }
 
-.button{
-    display:block;
-    margin:15px auto;
-    padding:15px;
-    width:90%;
-    text-align:center;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-}
+    .topbar-inner{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
 
-.spotify{
-    background:#1db954;
-    color:white;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
 
-.social{
-    background:#e7e2d9;
-    color:#3a342e;
-}
+    .brand-mark{
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--wine),var(--sunburst));
+      box-shadow:0 0 0 6px rgba(232,197,111,.18);
+      flex:0 0 auto;
+    }
 
-.song{
-    background:white;
-    border-radius:10px;
-    padding:15px;
-    margin:10px 0;
-    text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
+    .brand-text{
+      font-weight:900;
+      font-size:1.24rem;
+      letter-spacing:-.05em;
+    }
 
-.footer{
-    text-align:center;
-    margin:30px 0;
-    font-size:14px;
-}
-</style>
+    .desktop-nav{
+      display:none;
+      align-items:center;
+      gap:18px;
+    }
+
+    .desktop-nav a{
+      color:var(--muted);
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .desktop-nav a:hover{
+      color:var(--text);
+    }
+
+    .nav-cta{
+      min-height:44px;
+      border:none;
+      border-radius:999px;
+      padding:0 16px;
+      font-weight:800;
+      cursor:pointer;
+      color:white;
+      background:linear-gradient(135deg,var(--wine),var(--sunburst));
+      box-shadow:0 10px 26px rgba(138,75,86,.16);
+    }
+
+    .menu-btn{
+      width:46px;
+      height:46px;
+      border:none;
+      border-radius:14px;
+      background:white;
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+
+    .menu-btn span,
+    .menu-btn span::before,
+    .menu-btn span::after{
+      content:"";
+      display:block;
+      width:18px;
+      height:2px;
+      background:var(--text);
+      border-radius:999px;
+      position:relative;
+    }
+
+    .menu-btn span::before{position:absolute;top:-6px}
+    .menu-btn span::after{position:absolute;top:6px}
+
+    .mobile-menu{
+      display:none;
+      padding:0 18px 18px;
+      border-top:1px solid var(--line);
+      background:rgba(251,250,247,.98);
+    }
+
+    .mobile-menu.open{
+      display:grid;
+      gap:10px;
+    }
+
+    .mobile-menu a,
+    .mobile-menu button{
+      min-height:48px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .mobile-menu .mobile-primary{
+      background:linear-gradient(135deg,var(--wine),var(--sunburst));
+      color:white;
+      border:none;
+    }
+
+    .hero{
+      padding:34px 0 22px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .hero-main,
+    .hero-side,
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-main{
+      padding:28px;
+      background:
+        radial-gradient(circle at top left, rgba(183,214,234,.34), transparent 28%),
+        linear-gradient(180deg,var(--panel),var(--panel-2));
+    }
+
+    .hero-side{
+      padding:18px;
+      background:linear-gradient(180deg,#fffdf9,#f9f5ee);
+      display:grid;
+      gap:12px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      width:max-content;
+      max-width:100%;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(183,214,234,.35);
+      color:#4c6371;
+      font-size:.83rem;
+      font-weight:800;
+      margin-bottom:14px;
+      border:1px solid rgba(183,214,234,.8);
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(2.55rem,8vw,5rem);
+      line-height:.94;
+      letter-spacing:-.08em;
+      max-width:760px;
+    }
+
+    .hero-copy{
+      margin:0 0 20px;
+      color:var(--muted);
+      line-height:1.86;
+      font-size:1.03rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+
+    .btn{
+      min-height:54px;
+      border:none;
+      border-radius:18px;
+      padding:0 18px;
+      font:inherit;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--wine),var(--sunburst));
+      color:white;
+    }
+
+    .btn-secondary{
+      background:white;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .hero-note{
+      margin-top:16px;
+      color:#66584f;
+      line-height:1.75;
+      font-size:.95rem;
+      max-width:680px;
+    }
+
+    .hero-visual{
+      min-height:270px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(138,75,86,.10), rgba(183,214,234,.10)),
+        linear-gradient(135deg, #f8f1e6, #eef6fa);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .hero-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .placeholder{
+      padding:28px;
+      text-align:center;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .mini{
+      padding:16px;
+      border-radius:20px;
+      background:white;
+      border:1px solid var(--line);
+    }
+
+    .mini strong{
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .mini span{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.95rem;
+    }
+
+    .section{
+      padding:12px 0 22px;
+    }
+
+    .section-head{
+      margin-bottom:16px;
+    }
+
+    .section-head h2{
+      margin:0 0 10px;
+      font-size:clamp(1.85rem,6vw,2.8rem);
+      line-height:.98;
+      letter-spacing:-.05em;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+      max-width:780px;
+    }
+
+    .card{
+      padding:24px;
+      background:linear-gradient(180deg,var(--panel),#fcfaf5);
+    }
+
+    .text-block{
+      display:grid;
+      gap:15px;
+      line-height:1.86;
+      color:#473d35;
+    }
+
+    .text-block p{margin:0}
+    .highlight{color:var(--wine);font-weight:800}
+
+    .songs-grid,
+    .double-grid,
+    .triple-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    .song{
+      padding:17px;
+      border-radius:22px;
+      background:
+        linear-gradient(180deg, #fffdfa, #faf6ef);
+      border:1px solid var(--line);
+      display:grid;
+      gap:6px;
+    }
+
+    .song strong{font-size:1rem}
+    .song span{color:var(--muted);line-height:1.65;font-size:.94rem}
+    .song a{
+      margin-top:6px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--wine);
+      font-weight:800;
+    }
+
+    .quote-card{
+      background:
+        radial-gradient(circle at top right, rgba(232,197,111,.28), transparent 28%),
+        linear-gradient(180deg,#fffdf9,#f8f2e7);
+    }
+
+    .quote{
+      margin:0 0 12px;
+      font-size:clamp(1.4rem,5vw,2.35rem);
+      line-height:1.14;
+      letter-spacing:-.05em;
+      font-weight:900;
+    }
+
+    .talk-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .talk-item,
+    .contact-box{
+      padding:16px;
+      border-radius:20px;
+      background:white;
+      border:1px solid var(--line);
+    }
+
+    .contact-box strong{
+      display:block;
+      margin-bottom:7px;
+    }
+
+    .contact-box span{
+      color:var(--muted);
+      line-height:1.72;
+      font-size:.94rem;
+    }
+
+    .platforms{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .platform-link{
+      min-height:52px;
+      border-radius:16px;
+      padding:0 16px;
+      background:white;
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-weight:800;
+    }
+
+    .platform-link.primary{
+      color:white;
+      background:linear-gradient(135deg,var(--wine),var(--sunburst));
+      border:none;
+    }
+
+    .footer{
+      padding:10px 0 34px;
+    }
+
+    .footer-card{
+      text-align:center;
+    }
+
+    .footer-brand{
+      display:block;
+      font-size:1.16rem;
+      font-weight:900;
+      letter-spacing:-.04em;
+      margin-bottom:8px;
+    }
+
+    .footer-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    @media (min-width:760px){
+      .wrap{padding:0 24px}
+      .desktop-nav{display:flex}
+      .menu-btn{display:none}
+      .hero-actions{display:flex;flex-wrap:wrap}
+      .hero-actions .btn{min-width:190px}
+      .platforms{grid-template-columns:repeat(3,1fr)}
+      .double-grid{grid-template-columns:1fr 1fr}
+      .triple-grid{grid-template-columns:repeat(3,1fr)}
+    }
+
+    @media (min-width:980px){
+      .topbar-inner{min-height:78px}
+      .hero-grid{grid-template-columns:1.08fr .92fr}
+      .hero-main,.card{padding:30px}
+      .hero-visual{min-height:420px}
+    }
+  </style>
 </head>
-
 <body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-text">MauRock</span>
+      </a>
 
-<div class="container">
+      <nav class="desktop-nav">
+        <a href="#historia">Historia</a>
+        <a href="#musica">Canciones</a>
+        <a href="#encuentro">Encuentro</a>
+        <a href="#charlas">Charlas</a>
+        <a href="#contacto">Contacto</a>
+        <button class="nav-cta" onclick="window.open('https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4?si=aNhc3HPLSt2ne8U3y0FyqQ','_blank')">Escuchar en Spotify</button>
+      </nav>
 
-<img src="maurock.jpg" class="logo">
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span></button>
+    </div>
 
-<h1>Un espacio para escuchar</h1>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#historia" onclick="closeMenu()">Historia</a>
+      <a href="#musica" onclick="closeMenu()">Canciones</a>
+      <a href="#encuentro" onclick="closeMenu()">Encuentro</a>
+      <a href="#charlas" onclick="closeMenu()">Charlas</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <button class="mobile-primary" onclick="openSpotifyAndClose()">Escuchar en Spotify</button>
+    </div>
+  </header>
 
-<p>
-MauRock es un proyecto musical que nace desde la vida,  
-el dolor y la esperanza.
-</p>
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-main">
+          <div class="eyebrow">Música, memoria, fe y esperanza</div>
+          <h1>Un espacio más acogedor para escuchar, recordar y seguir.</h1>
+          <p class="hero-copy">
+            MauRock no quiere sentirse como vitrina ni como marca personal rígida.
+            Quiere parecerse más a un lugar de encuentro: un lugar donde la música acompaña,
+            la historia abre conversación y la esperanza puede respirar.
+          </p>
 
-<p>
-Si alguna de estas canciones logra acompañarte,  
-entonces todo esto ya tiene sentido.
-</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="window.open('https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4?si=aNhc3HPLSt2ne8U3y0FyqQ','_blank')">Escuchar en Spotify</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('historia')">Conocer la historia</button>
+          </div>
 
-<a class="button spotify" href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4?si=aNhc3HPLSt2ne8U3y0FyqQ" target="_blank">
-Escuchar en Spotify
-</a>
+          <div class="hero-note">
+            Si una canción logra acompañar a alguien, entonces este proyecto ya está cumpliendo su propósito.
+          </div>
+        </div>
 
-<h2 style="text-align:center;margin-top:30px;">Canciones</h2>
+        <div class="hero-side">
+          <div class="hero-visual">
+            <img src="maurock-cover.jpg" alt="Portada de MauRock" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="placeholder" style="display:none;">
+              Aquí puedes poner una portada más cálida o una foto de instrumentos.<br>
+              Guarda la imagen con el nombre <strong>maurock-cover.jpg</strong>.
+            </div>
+          </div>
 
-<div class="song">
-<a href="https://open.spotify.com/intl-es/track/4FyAxw3Xq3Jl4NWYVPgi7f?si=12d3839c26914087" target="_blank">Canción 1</a>
-</div>
+          <div class="mini">
+            <strong>Colores más luminosos</strong>
+            <span>Blanco perlado, celeste suave, amarillo cálido y un acento wine red para dar identidad sin oscurecer la página.</span>
+          </div>
 
-<div class="song">
-<a href="https://open.spotify.com/intl-es/track/1OWR0l0W2m06WhOAxJyEdK?si=98c7d3fdfa56429c" target="_blank">Canción 2</a>
-</div>
+          <div class="mini">
+            <strong>Menos cajas duras, más aire</strong>
+            <span>La idea es que la web se sienta más habitable, más amable y menos estructurada como una landing de producto.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="song">
-<a href="https://open.spotify.com/intl-es/track/15kC7uSV9Dm4iIxdIc2yXq?si=7a456f269d054b1b" target="_blank">Canción 3</a>
-</div>
+    <section class="section" id="historia">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>La historia detrás</h2>
+          <p>Una historia real que busca transformarse en compañía para otros.</p>
+        </div>
 
-<div class="song">
-<a href="https://open.spotify.com/intl-es/track/2iKVat6L076bZ7ov1aenNs?si=d68cc067b0df436a" target="_blank">Canción 4</a>
-</div>
+        <div class="card">
+          <div class="text-block">
+            <p>
+              MauRock comenzó a tomar forma durante una hospitalización extensa en 2025.
+              En medio del miedo, la fragilidad y la incertidumbre fueron apareciendo ideas,
+              frases y emociones que después se convirtieron en canciones.
+            </p>
+            <p>
+              El proceso siguió mientras la vida seguía golpeando: tratamientos, quimioterapia,
+              la enfermedad de su madre y una experiencia profundamente marcada por la pérdida y el acompañamiento.
+            </p>
+            <p>
+              Este proyecto intenta <span class="highlight">darle lenguaje a lo vivido</span>.
+              No para quedarse en el dolor, sino para abrir encuentro, memoria, fe y esperanza.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="song">
-<a href="https://open.spotify.com/intl-es/track/6G2uJVn7rVKbaMc59nKIZj?si=3b9973412ca64796" target="_blank">Canción 5</a>
-</div>
+    <section class="section" id="musica">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Canciones</h2>
+          <p>Singles lanzados uno a uno, como parte de un camino que sigue abierto.</p>
+        </div>
 
-<div class="song">
-<a href="https://open.spotify.com/intl-es/track/4yiqByKoMAGJX4oO2081qE?si=05ac827fa19f42a3" target="_blank">Canción 6</a>
-</div>
+        <div class="songs-grid">
+          <div class="song">
+            <strong>Verano Roto</strong>
+            <span>El instante en que algo cambia para siempre.</span>
+            <a href="https://open.spotify.com/intl-es/track/4FyAxw3Xq3Jl4NWYVPgi7f?si=12d3839c26914087" target="_blank" rel="noopener noreferrer">Escuchar en Spotify</a>
+          </div>
+          <div class="song">
+            <strong>Aunque tiemble el suelo</strong>
+            <span>Seguir en pie incluso cuando todo parece moverse.</span>
+            <a href="https://open.spotify.com/intl-es/track/1OWR0l0W2m06WhOAxJyEdK?si=98c7d3fdfa56429c" target="_blank" rel="noopener noreferrer">Escuchar en Spotify</a>
+          </div>
+          <div class="song">
+            <strong>El baile del miedo y la fe</strong>
+            <span>La tensión entre el temor y la confianza.</span>
+            <a href="https://open.spotify.com/intl-es/track/15kC7uSV9Dm4iIxdIc2yXq?si=7a456f269d054b1b" target="_blank" rel="noopener noreferrer">Escuchar en Spotify</a>
+          </div>
+          <div class="song">
+            <strong>Mi fortuna</strong>
+            <span>La pregunta por lo que realmente permanece.</span>
+            <a href="https://open.spotify.com/intl-es/track/2iKVat6L076bZ7ov1aenNs?si=d68cc067b0df436a" target="_blank" rel="noopener noreferrer">Escuchar en Spotify</a>
+          </div>
+          <div class="song">
+            <strong>Buscando el norte</strong>
+            <span>La necesidad de reencontrar dirección y sentido.</span>
+            <a href="https://open.spotify.com/intl-es/track/6G2uJVn7rVKbaMc59nKIZj?si=3b9973412ca64796" target="_blank" rel="noopener noreferrer">Escuchar en Spotify</a>
+          </div>
+          <div class="song">
+            <strong>Entre ruinas y fe</strong>
+            <span>La posibilidad de seguir creyendo después del golpe.</span>
+            <a href="https://open.spotify.com/intl-es/track/4yiqByKoMAGJX4oO2081qE?si=05ac827fa19f42a3" target="_blank" rel="noopener noreferrer">Escuchar en Spotify</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<h2 style="text-align:center;margin-top:30px;">Conectar</h2>
+    <section class="section" id="encuentro">
+      <div class="wrap">
+        <div class="card quote-card">
+          <p class="quote">“Con que este proyecto pueda ayudar a una persona, ya me siento pagado.”</p>
+          <div class="text-block">
+            <p>
+              Ese es el centro de MauRock: no poner una figura al medio, sino abrir una mesa,
+              una conversación, una canción que acompañe, una pausa donde alguien pueda respirar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<a class="button social" href="https://www.instagram.com/maurock_oficial" target="_blank">
-Instagram
-</a>
+    <section class="section" id="charlas">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Charlas y encuentros</h2>
+          <p>Un proyecto musical que también puede transformarse en conversación y acompañamiento.</p>
+        </div>
 
-<a class="button social" href="https://www.tiktok.com/@maurock_oficial" target="_blank">
-TikTok
-</a>
+        <div class="card">
+          <div class="talk-list">
+            <div class="talk-item">Resiliencia y procesos personales</div>
+            <div class="talk-item">Fe y sentido en medio de la crisis</div>
+            <div class="talk-item">La música como lenguaje para atravesar el dolor</div>
+            <div class="talk-item">Historias reales que pueden abrir diálogo y esperanza</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<a class="button social" href="https://wa.me/56997322973" target="_blank">
-WhatsApp
-</a>
+    <section class="section" id="contacto">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Contacto</h2>
+          <p>Para invitaciones, colaboraciones o para seguir de cerca el proyecto.</p>
+        </div>
 
-<div class="footer">
-MauRock · Música con propósito
-</div>
+        <div class="double-grid">
+          <div class="card">
+            <div class="contact-box">
+              <strong>Redes y plataformas</strong>
+              <span>Escucha, comparte y acompaña el proyecto desde donde ya está vivo.</span>
+            </div>
+            <div class="platforms">
+              <a class="platform-link primary" href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4?si=aNhc3HPLSt2ne8U3y0FyqQ" target="_blank" rel="noopener noreferrer">Spotify</a>
+              <a class="platform-link" href="https://www.instagram.com/maurock_oficial" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a class="platform-link" href="https://www.tiktok.com/@maurock_oficial?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a>
+            </div>
+          </div>
 
-</div>
+          <div class="card">
+            <div class="contact-box">
+              <strong>Invitaciones y colaboraciones</strong>
+              <span>Si quieres invitar una charla o contactarte directamente, aquí tienes un canal simple.</span>
+            </div>
+            <div class="platforms">
+              <a class="platform-link" href="https://wa.me/56997322973" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a class="platform-link" href="https://www.instagram.com/maurock_oficial" target="_blank" rel="noopener noreferrer">Mensaje por Instagram</a>
+              <a class="platform-link primary" href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4?si=aNhc3HPLSt2ne8U3y0FyqQ" target="_blank" rel="noopener noreferrer">Perfil Spotify</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="footer">
+      <div class="wrap">
+        <div class="card footer-card">
+          <span class="footer-brand">MauRock</span>
+          <p>Música con propósito.<br>© 2026 Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    function closeMenu() {
+      mobileMenu.classList.remove("open");
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function openSpotifyAndClose() {
+      closeMenu();
+      setTimeout(() => {
+        window.open("https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4?si=aNhc3HPLSt2ne8U3y0FyqQ", "_blank");
+      }, 120);
+    }
+
+    if (menuBtn) {
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+    }
+
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+  </script>
 </body>
 </html>
