@@ -49,7 +49,7 @@ p{
   padding:16px;
   border-radius:14px;
   font-weight:700;
-  margin-top:10px;
+  margin-top:12px;
 }
 
 .btn-primary{
@@ -61,6 +61,10 @@ p{
   background:#eef7fc;
 }
 
+.small{
+  font-size:.9rem;
+}
+
 img{
   width:100%;
   border-radius:20px;
@@ -69,24 +73,8 @@ img{
 
 .player iframe{
   width:100%;
-  height:200px;
-  border-radius:14px;
-}
-
-.song{
-  border:1px solid #d7e8f2;
-  border-radius:14px;
-  padding:14px;
-  margin-top:10px;
-  cursor:pointer;
-}
-
-.song.active{
-  background:#f0f8ff;
-}
-
-.small{
-  font-size:.9rem;
+  height:180px;
+  border-radius:12px;
 }
 </style>
 </head>
@@ -95,15 +83,20 @@ img{
 
 <div class="wrap">
 
-<!-- HERO -->
+<!-- 1. QUÉ ES -->
 <div class="card">
 
 <h1>
-Charlas que abren conversación real en colegios, empresas y comunidades.
+Charlas y encuentros para colegios, empresas y comunidades
 </h1>
 
+<p style="font-weight:600;">
+Espacios donde la música y una historia real abren conversación, reflexión y conexión entre las personas.
+</p>
+
 <p>
-MauRock no nace para mostrar una historia, sino para abrir espacios donde las personas puedan detenerse, escuchar y conectar con lo que están viviendo.
+No es un concierto ni una clase.  
+Es una experiencia pensada para detenerse, escuchar y hablar de lo que realmente importa.
 </p>
 
 <a class="btn btn-primary"
@@ -116,71 +109,28 @@ Quiero llevar esta experiencia a mi comunidad
 
 </div>
 
-<!-- ESCUCHAR -->
+<!-- 2. POR QUÉ IMPORTA -->
 <div class="card">
 
-<h2>Escuchar</h2>
+<h2>¿Por qué estos espacios hacen sentido?</h2>
 
-<div class="player">
-<iframe id="player"
-src="https://open.spotify.com/embed/track/4FyAxw3Xq3Jl4NWYVPgi7f"
-frameborder="0"
-allow="encrypted-media"></iframe>
-</div>
-
-<h3 id="title">Verano Roto</h3>
-
-<p id="desc">
-Hay momentos en la vida en que todo sigue igual por fuera… pero por dentro ya cambió para siempre.  
-Esta canción nace desde ese lugar: cuando entiendes que no puedes volver atrás, pero tampoco sabes bien cómo seguir adelante.
-</p>
-
-<div id="songs">
-
-<div class="song active"
-onclick="play('4FyAxw3Xq3Jl4NWYVPgi7f','Verano Roto','Hay momentos en la vida en que todo sigue igual por fuera… pero por dentro ya cambió para siempre.')">
-<strong>Verano Roto</strong>
-</div>
-
-<div class="song"
-onclick="play('1OWR0l0W2m06WhOAxJyEdK','Aunque tiemble el suelo','Cuando todo se mueve, aprender a sostenerse también es parte del camino.')">
-<strong>Aunque tiemble el suelo</strong>
-</div>
-
-<div class="song"
-onclick="play('15kC7uSV9Dm4iIxdIc2yXq','El baile del miedo y la fe','Vivir entre la angustia y la esperanza también forma parte de lo humano.')">
-<strong>El baile del miedo y la fe</strong>
-</div>
-
-</div>
-
-<a class="btn btn-soft"
-href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4"
-target="_blank">
-Escuchar todas las canciones en Spotify
-</a>
-
-</div>
-
-<!-- HISTORIA -->
-<div class="card">
-
-<h2>Desde dónde nace</h2>
-
-<p>
-Mauricio José Pinto Basso, profesor de música y guitarrista de Servicentro, crea MauRock como una forma de transformar experiencias en canciones.
+<p class="small">
+• Hay estudiantes que no saben cómo expresar lo que viven  
+• Equipos funcionando, pero desconectados  
+• Personas cargando procesos sin espacios para hablarlos  
 </p>
 
 <p>
-En medio de su proceso con el cáncer, la música aparece como un canal para expresar, ordenar y compartir lo vivido.
+A veces no falta contenido.  
+Falta un espacio donde lo que vivimos pueda aparecer.
 </p>
 
 </div>
 
-<!-- CHARLAS -->
+<!-- 3. IDEA CENTRAL -->
 <div class="card">
 
-<h2>Encuentros y charlas</h2>
+<h2></h2>
 
 <p>
 No se trata solo de música.  
@@ -193,38 +143,95 @@ El tuyo… ¿cuál es?
 ¿Y el de los tuyos?
 </p>
 
-<p>
-Estos encuentros abren un espacio donde las personas pueden detenerse, escuchar y comenzar a darle forma a lo que están viviendo.
-</p>
+</div>
+
+<!-- 4. CÓMO ES -->
+<div class="card">
+
+<h2>¿Cómo es un encuentro?</h2>
 
 <p class="small">
-• Colegios → estudiantes que necesitan expresar lo que viven  
-• Empresas → equipos que necesitan reconectar  
-• Comunidades → personas que necesitan ser escuchadas  
+• Música en vivo o escuchada en conjunto  
+• Relato de una experiencia real  
+• Espacio de reflexión  
+• Conversación adaptada al grupo  
+</p>
+
+<p>
+Cada encuentro se ajusta según la edad, contexto y tipo de comunidad.
+</p>
+
+</div>
+
+<!-- 5. MUESTRA MUSICAL -->
+<div class="card">
+
+<h2>Escuchar</h2>
+
+<div class="player">
+<iframe loading="lazy"
+src="https://open.spotify.com/embed/track/4FyAxw3Xq3Jl4NWYVPgi7f"
+frameborder="0"></iframe>
+</div>
+
+<p>
+Hay momentos en la vida en que todo sigue igual por fuera… pero por dentro ya cambió para siempre.
+</p>
+
+<a class="btn btn-soft"
+href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4"
+target="_blank">
+Escuchar más en Spotify
+</a>
+
+</div>
+
+<!-- 6. QUIÉN ESTÁ DETRÁS -->
+<div class="card">
+
+<h2>Quién está detrás</h2>
+
+<p>
+Mauricio José Pinto Basso es profesor de música y guitarrista de la banda Servicentro.
+</p>
+
+<p>
+En medio de su proceso con el cáncer, la música se transforma en un canal para expresar y compartir lo vivido, dando origen a MauRock y otros proyectos como MejorarIA.
+</p>
+
+</div>
+
+<!-- 7. PARA QUIÉN ES -->
+<div class="card">
+
+<h2>¿Para quién es esto?</h2>
+
+<p class="small">
+• Colegios → formación personal y conversación real  
+• Empresas → conexión humana y sentido  
+• Iglesias y comunidades → acompañamiento y reflexión  
+</p>
+
+</div>
+
+<!-- 8. CIERRE -->
+<div class="card">
+
+<h2>¿Te hace sentido?</h2>
+
+<p>
+Si al leer esto pensaste en tu curso, tu equipo o tu comunidad, probablemente este espacio es para ustedes.
 </p>
 
 <a class="btn btn-primary"
-href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quiero%20llevar%20esta%20charla%20a%20mi%20comunidad."
+href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20me%20hizo%20sentido%20esto%20y%20quiero%20conversarlo."
 target="_blank">
-Quiero llevar esta charla a mi comunidad
+Conversarlo por WhatsApp
 </a>
 
 </div>
 
 </div>
-
-<script>
-function play(track,title,desc){
-  document.getElementById("player").src =
-  "https://open.spotify.com/embed/track/"+track;
-
-  document.getElementById("title").innerText = title;
-  document.getElementById("desc").innerText = desc;
-
-  document.querySelectorAll(".song").forEach(e=>e.classList.remove("active"));
-  event.currentTarget.classList.add("active");
-}
-</script>
 
 </body>
 </html>
