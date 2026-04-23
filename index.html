@@ -6,115 +6,213 @@
   <title>MauRock | Encuentros con sentido</title>
   <style>
     :root{
-      --bg:#f4f1eb;
-      --paper:#f8f1df;
-      --card:#fffaf0;
-      --text:#4d3425;
-      --muted:#7a6558;
-      --accent:#7b5232;
-      --accent-soft:#e9dcc4;
-      --shadow:0 14px 40px rgba(60,40,20,.12);
-      --radius:24px;
+      --bg:#f4fbfa;
+      --bg-soft:#edf8f6;
+      --card:rgba(255,255,255,.9);
+      --card-strong:#ffffff;
+      --text:#22343c;
+      --muted:#5d7680;
+      --line:#d7ebe7;
+      --sky:#69bfe3;
+      --sky-strong:#3d9fc8;
+      --green:#77c8a4;
+      --green-strong:#4fa57f;
+      --green-soft:#e4f5ed;
+      --highlight:#effaf5;
+      --shadow:0 18px 50px rgba(34,52,60,.08);
+      --shadow-soft:0 10px 24px rgba(34,52,60,.05);
+      --radius:26px;
+      --radius-sm:18px;
+      --max:1120px;
     }
 
     *{box-sizing:border-box}
 
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.05) 0 8%, transparent 8% 100%),
-        linear-gradient(90deg, rgba(255,255,255,.3), rgba(255,255,255,.15)),
-        var(--bg);
+      font-family: Inter, Arial, Helvetica, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(105,191,227,.14), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(119,200,164,.12), transparent 26%),
+        linear-gradient(180deg, #f8fdfd 0%, var(--bg) 55%, var(--bg-soft) 100%);
     }
 
+    a{color:inherit}
+
     .page{
-      max-width:1100px;
+      max-width:var(--max);
       margin:0 auto;
-      padding:32px 20px 60px;
+      padding:28px 20px 64px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:26px;
+      padding:10px 4px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
+    .brand-mark{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--sky), var(--green));
+      box-shadow:var(--shadow-soft);
+    }
+
+    .brand small{
+      display:block;
+      font-size:.78rem;
+      color:var(--muted);
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-top:2px;
     }
 
     .hero{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns:1.05fr .95fr;
       gap:28px;
-      align-items:center;
+      align-items:stretch;
       margin-bottom:28px;
     }
 
     .hero-copy,
     .card{
-      background:rgba(255,250,240,.92);
-      border:1px solid rgba(123,82,50,.12);
-      border-radius:var(--radius);
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.7);
       box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+      border-radius:var(--radius);
     }
 
     .hero-copy{
       padding:42px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-copy::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:6px;
+      background:linear-gradient(90deg, var(--sky), var(--green));
     }
 
     .eyebrow{
-      display:inline-block;
-      font-size:.88rem;
-      font-weight:700;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      color:var(--accent);
-      background:var(--accent-soft);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:10px 14px;
       border-radius:999px;
-      margin-bottom:18px;
+      background:#f0fbf8;
+      color:var(--green-strong);
+      font-size:.82rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:20px;
+      border:1px solid var(--line);
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--sky), var(--green));
+      display:inline-block;
     }
 
     h1{
       margin:0 0 18px;
-      font-size:clamp(2rem,4vw,3.7rem);
-      line-height:1.05;
+      font-size:clamp(2.2rem, 4vw, 4.15rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+      max-width:12ch;
     }
 
     .lead{
-      font-size:1.15rem;
-      line-height:1.7;
+      margin:0 0 18px;
+      font-size:1.08rem;
+      line-height:1.8;
       color:var(--muted);
-      margin-bottom:24px;
+      max-width:62ch;
+    }
+
+    .lead-strong{
+      color:var(--text);
+      font-weight:700;
+      background:linear-gradient(transparent 60%, rgba(119,200,164,.18) 60%);
+      padding:0 .06em;
     }
 
     .hero-actions{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:10px;
+      margin-top:26px;
     }
 
     .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
       text-decoration:none;
       border-radius:14px;
       padding:15px 20px;
-      font-weight:700;
-      display:inline-block;
-      transition:.2s ease;
+      font-weight:800;
+      letter-spacing:.01em;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
     }
 
     .btn-primary{
-      background:var(--accent);
-      color:#fffaf4;
+      background:linear-gradient(135deg, var(--sky), var(--green));
+      color:white;
+      box-shadow:0 14px 28px rgba(77,165,127,.18);
     }
 
     .btn-secondary{
-      background:var(--accent-soft);
-      color:var(--accent);
+      background:#f7fdfc;
+      color:var(--green-strong);
+      border:1px solid var(--line);
     }
 
-    .btn:hover{ transform:translateY(-1px); }
+    .mini-note{
+      margin-top:16px;
+      font-size:.92rem;
+      color:var(--muted);
+    }
 
     .hero-visual{
       position:relative;
-      min-height:540px;
-      border-radius:32px;
+      min-height:560px;
+      border-radius:34px;
       overflow:hidden;
       box-shadow:var(--shadow);
+      background:var(--card-strong);
     }
 
     .hero-visual img{
@@ -126,110 +224,280 @@
 
     .overlay{
       position:absolute;
-      inset:auto 18px 18px 18px;
-      background:rgba(248,241,223,.88);
-      backdrop-filter: blur(6px);
+      left:18px;
+      right:18px;
+      bottom:18px;
+      padding:22px 22px 20px;
       border-radius:22px;
-      padding:22px;
-      border:1px solid rgba(123,82,50,.15);
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(255,255,255,.7);
+      backdrop-filter:blur(8px);
+      box-shadow:var(--shadow-soft);
     }
 
     .overlay strong{
       display:block;
-      font-size:1.35rem;
       margin-bottom:8px;
+      font-size:1.22rem;
+      color:var(--green-strong);
+      letter-spacing:-.02em;
     }
 
     .overlay p{
       margin:0;
       color:var(--muted);
-      line-height:1.6;
+      line-height:1.65;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      margin:20px 0 0;
+    }
+
+    .stat{
+      padding:16px 14px;
+      border-radius:18px;
+      background:var(--highlight);
+      border:1px solid var(--line);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:.92rem;
+      color:var(--text);
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      font-size:.92rem;
+      color:var(--muted);
+      line-height:1.55;
     }
 
     .grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
+      grid-template-columns:repeat(12, 1fr);
       gap:22px;
+      margin-top:18px;
     }
 
     .card{
       padding:28px;
+      position:relative;
     }
 
-    .card h2{
+    .card::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:26px;
+      bottom:26px;
+      width:4px;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--sky), var(--green));
+      opacity:.95;
+    }
+
+    .span-6{grid-column:span 6}
+    .span-12{grid-column:span 12}
+
+    .section-label{
+      display:inline-block;
+      margin-bottom:12px;
+      font-size:.8rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--sky-strong);
+    }
+
+    h2{
       margin:0 0 14px;
-      font-size:1.5rem;
+      font-size:1.62rem;
+      line-height:1.15;
+      letter-spacing:-.02em;
     }
 
-    .card p{
+    p{
       margin:0 0 14px;
-      line-height:1.75;
-      color:var(--muted);
-    }
-
-    .highlight{
-      color:var(--text);
-      font-weight:700;
-    }
-
-    ul{
-      margin:0;
-      padding-left:18px;
       color:var(--muted);
       line-height:1.8;
     }
 
-    .full{
-      grid-column:1 / -1;
-    }
-
     .quote{
-      font-size:1.25rem;
+      margin:0;
+      font-size:1.38rem;
       line-height:1.7;
       color:var(--text);
       font-weight:700;
+      max-width:46ch;
+    }
+
+    .quote-mark{
+      color:var(--green);
+      font-size:2.1rem;
+      line-height:1;
+      display:block;
+      margin-bottom:10px;
+    }
+
+    ul.clean{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:12px;
+    }
+
+    ul.clean li{
+      position:relative;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    ul.clean li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.8em;
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--sky), var(--green));
+      transform:translateY(-50%);
+    }
+
+    .split-list{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px 24px;
+    }
+
+    .audience-item{
+      padding:16px 18px;
+      border-radius:18px;
+      background:#fbfffe;
+      border:1px solid var(--line);
+    }
+
+    .audience-item strong{
+      display:block;
+      margin-bottom:6px;
+      color:var(--text);
+      font-size:1rem;
+    }
+
+    .audience-item span{
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.97rem;
     }
 
     .footer-cta{
       text-align:center;
-      padding:34px;
+      background:linear-gradient(135deg, rgba(105,191,227,.12), rgba(119,200,164,.14));
+    }
+
+    .footer-cta h2{
+      font-size:2rem;
     }
 
     .footer-cta p{
-      max-width:720px;
-      margin:0 auto 20px;
+      max-width:700px;
+      margin:0 auto 22px;
     }
 
-    @media (max-width: 860px){
-      .hero,
-      .grid{
+    .footer-cta .btn{
+      min-width:220px;
+    }
+
+    .subtle{
+      font-size:.92rem;
+      color:var(--muted);
+      margin-top:14px;
+    }
+
+    @media (max-width: 960px){
+      .hero{
         grid-template-columns:1fr;
       }
 
-      .hero-copy{padding:28px}
-      .hero-visual{min-height:440px}
+      .hero-visual{
+        min-height:460px;
+      }
+
+      .stats,
+      .split-list{
+        grid-template-columns:1fr;
+      }
+
+      .span-6,
+      .span-12{
+        grid-column:span 12;
+      }
+    }
+
+    @media (max-width: 720px){
+      .page{padding:20px 16px 48px}
+      .hero-copy,.card{padding:24px}
+      h1{max-width:100%}
+      .topbar{margin-bottom:18px}
+      .brand-mark{width:34px;height:34px;border-radius:12px}
     }
   </style>
 </head>
 <body>
   <main class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          MauRock
+          <small>Encuentros con sentido</small>
+        </div>
+      </div>
+    </div>
+
     <section class="hero">
       <div class="hero-copy">
-        <span class="eyebrow">MauRock · encuentros con sentido</span>
+        <span class="eyebrow">Arte, conversación y humanidad</span>
         <h1>El arte puede abrir conversaciones que normalmente no ocurren</h1>
+
         <p class="lead">
           No se trata solo de sacar lo que sientes y convertirlo en música. Se trata de encontrar un
           lenguaje artístico para plasmar lo que vivimos. En mi caso, ese lenguaje es la música.
-          <span class="highlight">¿Cuál es el tuyo? ¿Y el de los tuyos?</span>
+          <span class="lead-strong">¿Cuál es el tuyo? ¿Y el de los tuyos?</span>
         </p>
+
         <p class="lead">
           Esta propuesta está pensada para colegios, equipos, comunidades y también espacios donde
           las personas están atravesando procesos de salud o formación médica y necesitan reconectar
           con la dimensión humana de lo que viven.
         </p>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20estos%20encuentros." target="_blank">Conversarlo por WhatsApp</a>
           <a class="btn btn-secondary" href="#para-quien">Ver a quién va dirigido</a>
+        </div>
+
+        <div class="mini-note">Una propuesta minimalista, humana y adaptable a distintos contextos.</div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Música como lenguaje</strong>
+            <span>No como adorno, sino como puerta de entrada.</span>
+          </div>
+          <div class="stat">
+            <strong>Experiencia adaptable</strong>
+            <span>Según edad, contexto y necesidad del grupo.</span>
+          </div>
+          <div class="stat">
+            <strong>Enfoque humano</strong>
+            <span>Para detenerse, escuchar y abrir conversación.</span>
+          </div>
         </div>
       </div>
 
@@ -243,38 +511,43 @@
     </section>
 
     <section class="grid">
-      <article class="card">
-        <h2>¿Qué es esto?</h2>
+      <article class="card span-6">
+        <span class="section-label">Qué es</span>
+        <h2>No es un concierto. No es una clase.</h2>
         <p>
-          No es un concierto. No es una clase. No es una charla motivacional tradicional.
+          Tampoco es una charla motivacional tradicional. Es un espacio donde la música, la historia
+          personal y la conversación ayudan a que las personas miren lo que viven desde otro lugar.
         </p>
         <p>
-          Es un espacio donde la música, la historia personal y la conversación ayudan a que las personas
-          puedan mirar lo que viven desde otro lugar y encontrar un modo de expresarlo.
+          La experiencia busca abrir una forma de expresión, reflexión y conexión que muchas veces no
+          aparece en los formatos habituales.
         </p>
       </article>
 
-      <article class="card">
-        <h2>¿Por qué hace sentido?</h2>
-        <ul>
-          <li>Hay estudiantes que sienten mucho, pero no saben cómo expresarlo.</li>
-          <li>Hay equipos que funcionan, pero están emocionalmente desconectados.</li>
-          <li>Hay personas atravesando procesos de salud que necesitan un espacio humano.</li>
-          <li>Hay futuros profesionales de la salud que necesitan recordar que detrás de cada caso hay una persona.</li>
+      <article class="card span-6">
+        <span class="section-label">Por qué hace sentido</span>
+        <h2>Hay vivencias que necesitan otro lenguaje</h2>
+        <ul class="clean">
+          <li>Estudiantes que sienten mucho, pero no saben cómo expresarlo.</li>
+          <li>Equipos que funcionan, pero están emocionalmente desconectados.</li>
+          <li>Personas atravesando procesos de salud que necesitan un espacio humano.</li>
+          <li>Futuros profesionales de la salud que necesitan recordar la dimensión humana del cuidado.</li>
         </ul>
       </article>
 
-      <article class="card full">
-        <h2>Idea central</h2>
+      <article class="card span-12">
+        <span class="section-label">Idea central</span>
+        <div class="quote-mark">“</div>
         <p class="quote">
-          No todo lo que vivimos se puede decir con palabras. A veces necesitamos otro lenguaje.
-          En mi caso, ese lenguaje fue la música. ¿Cuál es el tuyo? ¿Y el de los tuyos?
+          No todo lo que vivimos se puede decir con palabras. A veces necesitamos otro lenguaje. En mi caso,
+          ese lenguaje fue la música. ¿Cuál es el tuyo? ¿Y el de los tuyos?
         </p>
       </article>
 
-      <article class="card">
-        <h2>¿Cómo es un encuentro?</h2>
-        <ul>
+      <article class="card span-6">
+        <span class="section-label">Cómo es</span>
+        <h2>Un encuentro simple, sensible y bien guiado</h2>
+        <ul class="clean">
           <li>Música en vivo o escuchada en conjunto.</li>
           <li>Relato de una experiencia real.</li>
           <li>Preguntas que abren reflexión.</li>
@@ -282,24 +555,42 @@
         </ul>
       </article>
 
-      <article class="card" id="para-quien">
-        <h2>¿Dónde puede hacer sentido?</h2>
-        <ul>
-          <li><strong>Colegios:</strong> formación personal, expresión y conversación real.</li>
-          <li><strong>Empresas y equipos:</strong> reconexión humana más allá de lo funcional.</li>
-          <li><strong>Comunidades:</strong> espacios de encuentro, escucha y sentido.</li>
-          <li><strong>Salud:</strong> acompañamiento humano en procesos difíciles.</li>
-          <li><strong>Formación médica:</strong> sensibilidad, empatía y dimensión humana del cuidado.</li>
-        </ul>
+      <article class="card span-6" id="para-quien">
+        <span class="section-label">Dónde puede hacer sentido</span>
+        <h2>Una propuesta transversal</h2>
+        <div class="split-list">
+          <div class="audience-item">
+            <strong>Colegios</strong>
+            <span>Formación personal, expresión y conversación real.</span>
+          </div>
+          <div class="audience-item">
+            <strong>Empresas y equipos</strong>
+            <span>Reconexión humana más allá de lo funcional.</span>
+          </div>
+          <div class="audience-item">
+            <strong>Comunidades</strong>
+            <span>Espacios de encuentro, escucha y sentido.</span>
+          </div>
+          <div class="audience-item">
+            <strong>Salud</strong>
+            <span>Acompañamiento humano en procesos difíciles.</span>
+          </div>
+          <div class="audience-item" style="grid-column:1 / -1;">
+            <strong>Formación médica</strong>
+            <span>Sensibilidad, empatía y dimensión humana del cuidado.</span>
+          </div>
+        </div>
       </article>
 
-      <article class="card full footer-cta">
+      <article class="card span-12 footer-cta">
+        <span class="section-label" style="color:var(--green-strong);">Cierre</span>
         <h2>¿Te hace sentido para tu comunidad?</h2>
         <p>
           Si al leer esto pensaste en un curso, un equipo, una comunidad o un espacio de salud,
           probablemente hay algo valioso que conversar.
         </p>
         <a class="btn btn-primary" href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20esto%20me%20hizo%20sentido%20y%20quiero%20conversarlo." target="_blank">Quiero hablarlo</a>
+        <div class="subtle">Un primer contacto simple puede abrir una experiencia significativa.</div>
       </article>
     </section>
   </main>
