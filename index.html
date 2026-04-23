@@ -8,7 +8,7 @@
     :root{
       --bg:#f4fbfa;
       --bg-soft:#edf8f6;
-      --card:rgba(255,255,255,.9);
+      --card:rgba(255,255,255,.92);
       --card-strong:#ffffff;
       --text:#22343c;
       --muted:#5d7680;
@@ -22,12 +22,10 @@
       --shadow:0 18px 50px rgba(34,52,60,.08);
       --shadow-soft:0 10px 24px rgba(34,52,60,.05);
       --radius:26px;
-      --radius-sm:18px;
       --max:1120px;
     }
 
     *{box-sizing:border-box}
-
     html{scroll-behavior:smooth}
 
     body{
@@ -45,7 +43,7 @@
     .page{
       max-width:var(--max);
       margin:0 auto;
-      padding:28px 20px 64px;
+      padding:20px 16px 48px;
     }
 
     .topbar{
@@ -53,8 +51,8 @@
       align-items:center;
       justify-content:space-between;
       gap:16px;
-      margin-bottom:26px;
-      padding:10px 4px;
+      margin-bottom:18px;
+      padding:8px 2px;
     }
 
     .brand{
@@ -66,16 +64,17 @@
     }
 
     .brand-mark{
-      width:40px;
-      height:40px;
+      width:38px;
+      height:38px;
       border-radius:14px;
       background:linear-gradient(135deg, var(--sky), var(--green));
       box-shadow:var(--shadow-soft);
+      flex-shrink:0;
     }
 
     .brand small{
       display:block;
-      font-size:.78rem;
+      font-size:.76rem;
       color:var(--muted);
       font-weight:600;
       letter-spacing:.08em;
@@ -85,25 +84,28 @@
 
     .hero{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:28px;
+      grid-template-columns:1.02fr .98fr;
+      gap:24px;
       align-items:stretch;
-      margin-bottom:28px;
+      margin-bottom:24px;
     }
 
     .hero-copy,
     .card{
       background:var(--card);
-      border:1px solid rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.78);
       box-shadow:var(--shadow);
       backdrop-filter:blur(10px);
       border-radius:var(--radius);
     }
 
     .hero-copy{
-      padding:42px;
+      padding:38px;
       position:relative;
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
     }
 
     .hero-copy::before{
@@ -128,8 +130,10 @@
       font-weight:800;
       text-transform:uppercase;
       letter-spacing:.08em;
-      margin-bottom:20px;
+      margin-bottom:18px;
       border:1px solid var(--line);
+      width:max-content;
+      max-width:100%;
     }
 
     .eyebrow::before{
@@ -139,20 +143,21 @@
       border-radius:999px;
       background:linear-gradient(135deg, var(--sky), var(--green));
       display:inline-block;
+      flex-shrink:0;
     }
 
     h1{
       margin:0 0 18px;
-      font-size:clamp(2.2rem, 4vw, 4.15rem);
-      line-height:1.02;
+      font-size:clamp(2rem, 6vw, 4.1rem);
+      line-height:1.04;
       letter-spacing:-.03em;
       max-width:12ch;
     }
 
     .lead{
       margin:0 0 18px;
-      font-size:1.08rem;
-      line-height:1.8;
+      font-size:1.05rem;
+      line-height:1.78;
       color:var(--muted);
       max-width:62ch;
     }
@@ -168,7 +173,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:26px;
+      margin-top:24px;
     }
 
     .btn{
@@ -182,6 +187,7 @@
       font-weight:800;
       letter-spacing:.01em;
       transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+      text-align:center;
     }
 
     .btn:hover{
@@ -207,9 +213,8 @@
     }
 
     .hero-visual{
-      position:relative;
-      min-height:560px;
-      border-radius:34px;
+      min-height:540px;
+      border-radius:32px;
       overflow:hidden;
       box-shadow:var(--shadow);
       background:var(--card-strong);
@@ -219,34 +224,20 @@
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position:center;
       display:block;
     }
 
-    .overlay{
-      position:absolute;
-      left:18px;
-      right:18px;
-      bottom:18px;
-      padding:22px 22px 20px;
-      border-radius:22px;
-      background:rgba(255,255,255,.84);
-      border:1px solid rgba(255,255,255,.7);
-      backdrop-filter:blur(8px);
-      box-shadow:var(--shadow-soft);
-    }
-
-    .overlay strong{
-      display:block;
-      margin-bottom:8px;
-      font-size:1.22rem;
-      color:var(--green-strong);
-      letter-spacing:-.02em;
-    }
-
-    .overlay p{
-      margin:0;
-      color:var(--muted);
+    .hero-caption{
+      margin-top:12px;
+      padding:0 6px;
+      font-size:.98rem;
       line-height:1.65;
+      color:var(--muted);
+    }
+
+    .hero-caption strong{
+      color:var(--green-strong);
     }
 
     .stats{
@@ -279,12 +270,12 @@
     .grid{
       display:grid;
       grid-template-columns:repeat(12, 1fr);
-      gap:22px;
+      gap:20px;
       margin-top:18px;
     }
 
     .card{
-      padding:28px;
+      padding:26px;
       position:relative;
     }
 
@@ -292,8 +283,8 @@
       content:"";
       position:absolute;
       left:0;
-      top:26px;
-      bottom:26px;
+      top:24px;
+      bottom:24px;
       width:4px;
       border-radius:999px;
       background:linear-gradient(180deg, var(--sky), var(--green));
@@ -315,21 +306,21 @@
 
     h2{
       margin:0 0 14px;
-      font-size:1.62rem;
-      line-height:1.15;
+      font-size:1.58rem;
+      line-height:1.16;
       letter-spacing:-.02em;
     }
 
     p{
       margin:0 0 14px;
       color:var(--muted);
-      line-height:1.8;
+      line-height:1.78;
     }
 
     .quote{
       margin:0;
-      font-size:1.38rem;
-      line-height:1.7;
+      font-size:1.32rem;
+      line-height:1.68;
       color:var(--text);
       font-weight:700;
       max-width:46ch;
@@ -337,7 +328,7 @@
 
     .quote-mark{
       color:var(--green);
-      font-size:2.1rem;
+      font-size:2rem;
       line-height:1;
       display:block;
       margin-bottom:10px;
@@ -355,7 +346,7 @@
       position:relative;
       padding-left:18px;
       color:var(--muted);
-      line-height:1.75;
+      line-height:1.72;
     }
 
     ul.clean li::before{
@@ -373,7 +364,7 @@
     .split-list{
       display:grid;
       grid-template-columns:repeat(2, 1fr);
-      gap:14px 24px;
+      gap:14px 20px;
     }
 
     .audience-item{
@@ -392,7 +383,7 @@
 
     .audience-item span{
       color:var(--muted);
-      line-height:1.65;
+      line-height:1.62;
       font-size:.97rem;
     }
 
@@ -402,7 +393,7 @@
     }
 
     .footer-cta h2{
-      font-size:2rem;
+      font-size:1.95rem;
     }
 
     .footer-cta p{
@@ -426,7 +417,7 @@
       }
 
       .hero-visual{
-        min-height:460px;
+        min-height:420px;
       }
 
       .stats,
@@ -441,11 +432,74 @@
     }
 
     @media (max-width: 720px){
-      .page{padding:20px 16px 48px}
-      .hero-copy,.card{padding:24px}
-      h1{max-width:100%}
-      .topbar{margin-bottom:18px}
-      .brand-mark{width:34px;height:34px;border-radius:12px}
+      .page{
+        padding:14px 12px 38px;
+      }
+
+      .topbar{
+        margin-bottom:12px;
+      }
+
+      .hero-copy,
+      .card{
+        padding:22px;
+      }
+
+      .brand-mark{
+        width:34px;
+        height:34px;
+        border-radius:12px;
+      }
+
+      h1{
+        max-width:100%;
+        font-size:clamp(1.95rem, 10vw, 2.8rem);
+        line-height:1.06;
+      }
+
+      .lead{
+        font-size:1rem;
+        line-height:1.72;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .hero-visual{
+        min-height:320px;
+        border-radius:24px;
+      }
+
+      .section-label{
+        font-size:.74rem;
+      }
+
+      h2{
+        font-size:1.4rem;
+      }
+
+      .quote{
+        font-size:1.12rem;
+        line-height:1.64;
+      }
+
+      .card::before{
+        top:18px;
+        bottom:18px;
+      }
+
+      .footer-cta h2{
+        font-size:1.68rem;
+      }
     }
   </style>
 </head>
@@ -501,11 +555,12 @@
         </div>
       </div>
 
-      <div class="hero-visual">
-        <img src="maurock-cover.png" alt="Partitura formando un corazón" />
-        <div class="overlay">
-          <strong>La música es mi lenguaje.</strong>
-          <p>Pero lo importante no es solo la música, sino lo que permite que aparezca en otros.</p>
+      <div>
+        <div class="hero-visual">
+          <img src="maurock-cover.png" alt="Partitura formando un corazón" />
+        </div>
+        <div class="hero-caption">
+          <strong>La música es mi lenguaje.</strong> Pero lo importante no es solo la música, sino el espacio que abre para que algo real aparezca.
         </div>
       </div>
     </section>
