@@ -1,237 +1,307 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MauRock | Encuentros con sentido</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MauRock | Encuentros con sentido</title>
+  <style>
+    :root{
+      --bg:#f4f1eb;
+      --paper:#f8f1df;
+      --card:#fffaf0;
+      --text:#4d3425;
+      --muted:#7a6558;
+      --accent:#7b5232;
+      --accent-soft:#e9dcc4;
+      --shadow:0 14px 40px rgba(60,40,20,.12);
+      --radius:24px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    *{box-sizing:border-box}
 
-<style>
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#f7fbff;
-  color:#2b3b46;
-}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.05) 0 8%, transparent 8% 100%),
+        linear-gradient(90deg, rgba(255,255,255,.3), rgba(255,255,255,.15)),
+        var(--bg);
+      color:var(--text);
+    }
 
-.wrap{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-}
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      padding:32px 20px 60px;
+    }
 
-h1{
-  font-size:2.4rem;
-  line-height:1.1;
-}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:28px;
+      align-items:center;
+      margin-bottom:28px;
+    }
 
-h2{
-  margin-top:0;
-}
+    .hero-copy,
+    .card{
+      background:rgba(255,250,240,.92);
+      border:1px solid rgba(123,82,50,.12);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
 
-p{
-  color:#5f6f7a;
-  line-height:1.7;
-}
+    .hero-copy{
+      padding:42px;
+    }
 
-.card{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-  margin-bottom:20px;
-}
+    .eyebrow{
+      display:inline-block;
+      font-size:.88rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--accent);
+      background:var(--accent-soft);
+      padding:10px 14px;
+      border-radius:999px;
+      margin-bottom:18px;
+    }
 
-.btn{
-  display:block;
-  text-align:center;
-  padding:16px;
-  border-radius:14px;
-  font-weight:700;
-  margin-top:12px;
-}
+    h1{
+      margin:0 0 18px;
+      font-size:clamp(2rem,4vw,3.7rem);
+      line-height:1.05;
+    }
 
-.btn-primary{
-  background:#67add7;
-  color:white;
-}
+    .lead{
+      font-size:1.15rem;
+      line-height:1.7;
+      color:var(--muted);
+      margin-bottom:24px;
+    }
 
-.btn-soft{
-  background:#eef7fc;
-}
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:10px;
+    }
 
-.small{
-  font-size:.9rem;
-}
+    .btn{
+      text-decoration:none;
+      border-radius:14px;
+      padding:15px 20px;
+      font-weight:700;
+      display:inline-block;
+      transition:.2s ease;
+    }
 
-img{
-  width:100%;
-  border-radius:20px;
-  margin-top:15px;
-}
+    .btn-primary{
+      background:var(--accent);
+      color:#fffaf4;
+    }
 
-.player iframe{
-  width:100%;
-  height:180px;
-  border-radius:12px;
-}
-</style>
+    .btn-secondary{
+      background:var(--accent-soft);
+      color:var(--accent);
+    }
+
+    .btn:hover{ transform:translateY(-1px); }
+
+    .hero-visual{
+      position:relative;
+      min-height:540px;
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      background:rgba(248,241,223,.88);
+      backdrop-filter: blur(6px);
+      border-radius:22px;
+      padding:22px;
+      border:1px solid rgba(123,82,50,.15);
+    }
+
+    .overlay strong{
+      display:block;
+      font-size:1.35rem;
+      margin-bottom:8px;
+    }
+
+    .overlay p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .card{
+      padding:28px;
+    }
+
+    .card h2{
+      margin:0 0 14px;
+      font-size:1.5rem;
+    }
+
+    .card p{
+      margin:0 0 14px;
+      line-height:1.75;
+      color:var(--muted);
+    }
+
+    .highlight{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .full{
+      grid-column:1 / -1;
+    }
+
+    .quote{
+      font-size:1.25rem;
+      line-height:1.7;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .footer-cta{
+      text-align:center;
+      padding:34px;
+    }
+
+    .footer-cta p{
+      max-width:720px;
+      margin:0 auto 20px;
+    }
+
+    @media (max-width: 860px){
+      .hero,
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-copy{padding:28px}
+      .hero-visual{min-height:440px}
+    }
+  </style>
 </head>
-
 <body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">MauRock · encuentros con sentido</span>
+        <h1>El arte puede abrir conversaciones que normalmente no ocurren</h1>
+        <p class="lead">
+          No se trata solo de sacar lo que sientes y convertirlo en música. Se trata de encontrar un
+          lenguaje artístico para plasmar lo que vivimos. En mi caso, ese lenguaje es la música.
+          <span class="highlight">¿Cuál es el tuyo? ¿Y el de los tuyos?</span>
+        </p>
+        <p class="lead">
+          Esta propuesta está pensada para colegios, equipos, comunidades y también espacios donde
+          las personas están atravesando procesos de salud o formación médica y necesitan reconectar
+          con la dimensión humana de lo que viven.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20estos%20encuentros." target="_blank">Conversarlo por WhatsApp</a>
+          <a class="btn btn-secondary" href="#para-quien">Ver a quién va dirigido</a>
+        </div>
+      </div>
 
-<div class="wrap">
+      <div class="hero-visual">
+        <img src="maurock-cover.png" alt="Partitura formando un corazón" />
+        <div class="overlay">
+          <strong>La música es mi lenguaje.</strong>
+          <p>Pero lo importante no es solo la música, sino lo que permite que aparezca en otros.</p>
+        </div>
+      </div>
+    </section>
 
-<!-- 1. QUÉ ES -->
-<div class="card">
+    <section class="grid">
+      <article class="card">
+        <h2>¿Qué es esto?</h2>
+        <p>
+          No es un concierto. No es una clase. No es una charla motivacional tradicional.
+        </p>
+        <p>
+          Es un espacio donde la música, la historia personal y la conversación ayudan a que las personas
+          puedan mirar lo que viven desde otro lugar y encontrar un modo de expresarlo.
+        </p>
+      </article>
 
-<h1>
-Charlas y encuentros para colegios, empresas y comunidades
-</h1>
+      <article class="card">
+        <h2>¿Por qué hace sentido?</h2>
+        <ul>
+          <li>Hay estudiantes que sienten mucho, pero no saben cómo expresarlo.</li>
+          <li>Hay equipos que funcionan, pero están emocionalmente desconectados.</li>
+          <li>Hay personas atravesando procesos de salud que necesitan un espacio humano.</li>
+          <li>Hay futuros profesionales de la salud que necesitan recordar que detrás de cada caso hay una persona.</li>
+        </ul>
+      </article>
 
-<p style="font-weight:600;">
-Espacios donde la música y una historia real abren conversación, reflexión y conexión entre las personas.
-</p>
+      <article class="card full">
+        <h2>Idea central</h2>
+        <p class="quote">
+          No todo lo que vivimos se puede decir con palabras. A veces necesitamos otro lenguaje.
+          En mi caso, ese lenguaje fue la música. ¿Cuál es el tuyo? ¿Y el de los tuyos?
+        </p>
+      </article>
 
-<p>
-No es un concierto ni una clase.  
-Es una experiencia pensada para detenerse, escuchar y hablar de lo que realmente importa.
-</p>
+      <article class="card">
+        <h2>¿Cómo es un encuentro?</h2>
+        <ul>
+          <li>Música en vivo o escuchada en conjunto.</li>
+          <li>Relato de una experiencia real.</li>
+          <li>Preguntas que abren reflexión.</li>
+          <li>Conversación adaptada al grupo y al contexto.</li>
+        </ul>
+      </article>
 
-<a class="btn btn-primary"
-href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20quiero%20llevar%20esta%20experiencia%20a%20mi%20comunidad."
-target="_blank">
-Quiero llevar esta experiencia a mi comunidad
-</a>
+      <article class="card" id="para-quien">
+        <h2>¿Dónde puede hacer sentido?</h2>
+        <ul>
+          <li><strong>Colegios:</strong> formación personal, expresión y conversación real.</li>
+          <li><strong>Empresas y equipos:</strong> reconexión humana más allá de lo funcional.</li>
+          <li><strong>Comunidades:</strong> espacios de encuentro, escucha y sentido.</li>
+          <li><strong>Salud:</strong> acompañamiento humano en procesos difíciles.</li>
+          <li><strong>Formación médica:</strong> sensibilidad, empatía y dimensión humana del cuidado.</li>
+        </ul>
+      </article>
 
-<img src="maurock-cover.png">
-
-</div>
-
-<!-- 2. POR QUÉ IMPORTA -->
-<div class="card">
-
-<h2>¿Por qué estos espacios hacen sentido?</h2>
-
-<p class="small">
-• Hay estudiantes que no saben cómo expresar lo que viven  
-• Equipos funcionando, pero desconectados  
-• Personas cargando procesos sin espacios para hablarlos  
-</p>
-
-<p>
-A veces no falta contenido.  
-Falta un espacio donde lo que vivimos pueda aparecer.
-</p>
-
-</div>
-
-<!-- 3. IDEA CENTRAL -->
-<div class="card">
-
-<h2></h2>
-
-<p>
-No se trata solo de música.  
-Se trata de encontrar un lenguaje para aquello que nos toca vivir.
-</p>
-
-<p>
-En mi caso, ese lenguaje fue la música.  
-El tuyo… ¿cuál es?  
-¿Y el de los tuyos?
-</p>
-
-</div>
-
-<!-- 4. CÓMO ES -->
-<div class="card">
-
-<h2>¿Cómo es un encuentro?</h2>
-
-<p class="small">
-• Música en vivo o escuchada en conjunto  
-• Relato de una experiencia real  
-• Espacio de reflexión  
-• Conversación adaptada al grupo  
-</p>
-
-<p>
-Cada encuentro se ajusta según la edad, contexto y tipo de comunidad.
-</p>
-
-</div>
-
-<!-- 5. MUESTRA MUSICAL -->
-<div class="card">
-
-<h2>Escuchar</h2>
-
-<div class="player">
-<iframe loading="lazy"
-src="https://open.spotify.com/embed/track/4FyAxw3Xq3Jl4NWYVPgi7f"
-frameborder="0"></iframe>
-</div>
-
-<p>
-Hay momentos en la vida en que todo sigue igual por fuera… pero por dentro ya cambió para siempre.
-</p>
-
-<a class="btn btn-soft"
-href="https://open.spotify.com/intl-es/artist/5JaZPrS3Sg3Hnp4Wr5MAy4"
-target="_blank">
-Escuchar más en Spotify
-</a>
-
-</div>
-
-<!-- 6. QUIÉN ESTÁ DETRÁS -->
-<div class="card">
-
-<h2>Quién está detrás</h2>
-
-<p>
-Mauricio José Pinto Basso es profesor de música y guitarrista de la banda Servicentro.
-</p>
-
-<p>
-En medio de su proceso con el cáncer, la música se transforma en un canal para expresar y compartir lo vivido, dando origen a MauRock y otros proyectos como MejorarIA.
-</p>
-
-</div>
-
-<!-- 7. PARA QUIÉN ES -->
-<div class="card">
-
-<h2>¿Para quién es esto?</h2>
-
-<p class="small">
-• Colegios → formación personal y conversación real  
-• Empresas → conexión humana y sentido  
-• Iglesias y comunidades → acompañamiento y reflexión  
-</p>
-
-</div>
-
-<!-- 8. CIERRE -->
-<div class="card">
-
-<h2>¿Te hace sentido?</h2>
-
-<p>
-Si al leer esto pensaste en tu curso, tu equipo o tu comunidad, probablemente este espacio es para ustedes.
-</p>
-
-<a class="btn btn-primary"
-href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20me%20hizo%20sentido%20esto%20y%20quiero%20conversarlo."
-target="_blank">
-Conversarlo por WhatsApp
-</a>
-
-</div>
-
-</div>
-
+      <article class="card full footer-cta">
+        <h2>¿Te hace sentido para tu comunidad?</h2>
+        <p>
+          Si al leer esto pensaste en un curso, un equipo, una comunidad o un espacio de salud,
+          probablemente hay algo valioso que conversar.
+        </p>
+        <a class="btn btn-primary" href="https://wa.me/56997322973?text=Hola%20Mauricio%2C%20esto%20me%20hizo%20sentido%20y%20quiero%20conversarlo." target="_blank">Quiero hablarlo</a>
+      </article>
+    </section>
+  </main>
 </body>
 </html>
